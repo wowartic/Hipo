@@ -1,8 +1,6 @@
-import random
-import sys
-import os
+
 import calendar
-import networkx
+
 
 Pujcka = 2520000
 Urok = 1.79
@@ -28,12 +26,45 @@ print("spaltka" + str(Splatka))
 
 UrokCelkem = 0
 MesicCelkem = 0
-
+MimoradnaSplatka = input()
 
 class UrokVMesici(object):
     pass
 
 
+def test ( MimoradnaSplatka ):
+
+
+    var = Pujcka - MimoradnaSplatka
+    Pujcka = var
+    for x in range(0, 12):
+        if calendar.isleap(int(Rok)):
+            DniVRoce = 356
+        else:
+            DniVRoce = 355
+
+        DniVMesici = calendar.monthrange(int(Rok), int(Mesic))[1]
+
+        UrokVMesici = Pujcka / DniVRoce / 100 * Urok * DniVMesici
+        UrokCelkem = UrokCelkem + UrokVMesici
+        Pujcka = Pujcka - (Splatka - UrokVMesici)
+        MesicCelkem = MesicCelkem + 1
+
+        Mesic = Mesic + 1
+
+        if Mesic >= 13:
+            Mesic = 1
+            Rok = Rok + 1
+
+        print("Dluh:", "{:10.2f}".format(Pujcka), "  Zaplaceno na urocich:", "{:10.2f}".format(UrokCelkem)
+              , "  Urok v tento mesic:", "{:07.2f}".format(UrokVMesici), "  Mesic:", MesicCelkem)
+
+
+MimoradnaSplatka = input("Prosim zadejte vysi mimoradne splatky: ")
+test(mimoradnaSplatka)
+
+
+"""
 while Pujcka > 0:
     # Pujcka = int(Pujcka) - 1
 
@@ -55,4 +86,6 @@ while Pujcka > 0:
         Mesic = 1
         Rok = Rok + 1
 
-    print(Pujcka, UrokCelkem, UrokVMesici, MesicCelkem)
+    print("Dluh:","{:10.2f}".format(Pujcka),"  Zaplaceno na urocich:","{:10.2f}".format(UrokCelkem)
+          ,"  Urok v tento mesic:","{:07.2f}".format(UrokVMesici), "  Mesic:",MesicCelkem)
+"""
