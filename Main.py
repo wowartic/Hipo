@@ -26,8 +26,6 @@ UrokCelkem = 0
 MesicCelkem = 0
 
 while Pujcka > 0:
-    # Pujcka = int(Pujcka) - 1
-
     if calendar.isleap(int(Rok)):
         DniVRoce = 356
     else:
@@ -39,9 +37,7 @@ while Pujcka > 0:
     UrokCelkem = UrokCelkem + UrokVMesici
     Pujcka = Pujcka - (Splatka - UrokVMesici)
     MesicCelkem = MesicCelkem + 1
-
     Mesic = Mesic + 1
-
     if Mesic >= 13:
         Mesic = 1
         Rok = Rok + 1
